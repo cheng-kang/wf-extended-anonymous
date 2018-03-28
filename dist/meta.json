@@ -1,0 +1,17 @@
+{
+  "library": "WfExtendedAnonymous",
+  "version": "0.0.1",
+  "title": "title",
+  "description": "description",
+  "translation": {
+    "fallback": "en",
+    "en": {
+      "description": "🎭A wildfire plugin that allows you to comment with user info without signing-in. More details, please refer to [Issue 33](https://github.com/cheng-kang/wildfire/issues/33).",
+      "title": "Extended Anonymous Comment"
+    },
+    "zh-CN": {
+      "description": "🎭一个让用户可以通过填写用户信息而不是注册、登录来进行非匿名评论。参考这个 [Issue](https://github.com/cheng-kang/wildfire/issues/33) 的讨论。",
+      "title": "匿名评论拓展"
+    }
+  }
+}
