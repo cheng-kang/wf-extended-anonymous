@@ -11,7 +11,7 @@ export default {
   ],
   computed: {
     isAnonymousComment() {
-      return this.comment.uid === this.config.anonymousUserId;
+      return this.comment.uid === this.config.anonymousUserId || this.comment.WfExtendedAnonymous;
     },
   },
   created() {
@@ -19,6 +19,7 @@ export default {
     this.db.ref(`plugins/WfExtendedAnonymous/a/a/x/x/u/${this.comment.commentId}`).on('value', (snapshot) => {
       const { email, displayName } = snapshot.val() || {};
       if (email && displayName) {
+        this.$set(this.$parent.author, 'WfExtendedAnonymous', true);
         this.$set(this.$parent.author, 'email', email);
         this.$set(this.$parent.author, 'displayName', displayName);
       }
