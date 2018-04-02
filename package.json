@@ -1,6 +1,6 @@
 {
   "name": "wf-extended-anonymous",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "🎭Allow users to post comments in the traditional way of providing Email and Display Name. For more details, please refer to [Issue 33](https://github.com/cheng-kang/wildfire/issues/33).",
   "author": "Kang Cheng <me@chengkang.pw>",
   "files": [

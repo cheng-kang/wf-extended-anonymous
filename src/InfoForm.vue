@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div>
+    <div class="info-form">
       <i-alert show-icon closable>{{t('alert')}}</i-alert>
       <i-form v-if="shouldRender" ref="form" :model="form" :rules="rules" inline>
         <i-form-item>
@@ -34,6 +34,7 @@ export default {
   ],
   data() {
     return {
+      isInfoSet: false,
       form: {
         email: '',
         displayName: '',
@@ -54,11 +55,12 @@ export default {
       return !this.commonData.user;
     },
     updateButtonTitle() {
-      return this.t((this.form.email && this.form.displayName) ? 'update' : 'save');
+      return this.t(this.isInfoSet ? 'update' : 'save');
     },
   },
   created() {
     const { email, displayName } = getCookie();
+    if (email && displayName) this.isInfoSet = true;
     this.$set(this.form, 'email', email);
     this.$set(this.form, 'displayName', displayName);
   },
@@ -68,6 +70,7 @@ export default {
         if (valid) {
           document.cookie = `WfExtendedAnonymous=${JSON.stringify(this.form)}`;
           this.$Message.success(this.t('updated'));
+          this.isInfoSet = true;
         } else {
           this.$Message.error(this.t('failed'));
         }
@@ -77,9 +80,13 @@ export default {
 };
 </script>
 <style scoped>
+.info-form {
+  margin-top: -14px;
+}
 .ivu-form {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 8px;
 }
 .ivu-form-item {
   margin: 0 0 16px 0 !important;
